@@ -1,6 +1,11 @@
 # flutter_app_3_peliculas
 
-A new Flutter application.
+A Flutter application that uses themoviedb api to get updated popular movies.
+
+
+
+![alt text](https://i.imgur.com/CzTELxo.jpg)
+![alt text](https://i.imgur.com/F2jKy8U.jpg)
 
 ## Getting Started
 
