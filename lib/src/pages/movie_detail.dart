@@ -8,7 +8,7 @@ class MovieDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    final Movie movie = ModalRoute.of(context).settings.arguments;
+    final Movie movie = ModalRoute.of(context)?.settings.arguments as Movie;
 
     return Scaffold(
       body: CustomScrollView(
@@ -39,7 +39,7 @@ class MovieDetail extends StatelessWidget {
       flexibleSpace: FlexibleSpaceBar(
         centerTitle: true,
         title: Text(
-            movie.title,
+            movie.title!,
             style: TextStyle(color: Colors.white, fontSize: 16),
         ),
         background: FadeInImage(
@@ -58,7 +58,7 @@ class MovieDetail extends StatelessWidget {
       child: Row(
         children: <Widget>[
           Hero(
-            tag: movie.uniqueId,
+            tag: movie.uniqueId!,
             child: ClipRRect(
               borderRadius: BorderRadius.circular(15),
               child: Image(
@@ -72,13 +72,13 @@ class MovieDetail extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Text(movie.title, style: Theme.of(context).textTheme.title, overflow: TextOverflow.ellipsis, maxLines: 2,),
+                Text(movie.title!, style: Theme.of(context).textTheme.titleLarge, overflow: TextOverflow.ellipsis, maxLines: 2,),
                 //SizedBox(height: 10,),
-                Text(movie.originalTitle, style: Theme.of(context).textTheme.subtitle, overflow: TextOverflow.ellipsis, maxLines: 2,),
+                Text(movie.originalTitle!, style: Theme.of(context).textTheme.titleSmall, overflow: TextOverflow.ellipsis, maxLines: 2,),
                 Row(
                   children: <Widget>[
                     Icon(Icons.star_border),
-                    Text(movie.voteAverage.toString(), style: Theme.of(context).textTheme.subhead)
+                    Text(movie.voteAverage.toString(), style: Theme.of(context).textTheme.titleMedium)
                   ],
                 )
               ],
@@ -93,7 +93,7 @@ class MovieDetail extends StatelessWidget {
     return
         Container(
           padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-          child: Text(movie.overview, textAlign: TextAlign.justify,),
+          child: Text(movie.overview!, textAlign: TextAlign.justify,),
 
 
 
@@ -106,7 +106,7 @@ class MovieDetail extends StatelessWidget {
       future: moviesProvider.getCast(movie.id.toString()),
       builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
         if(snapshot.hasData){
-          return _createActorsPageView(snapshot.data);
+          return _createActorsPageView(snapshot.data as List<Actor>);
         }else{
           return Center(
             child: CircularProgressIndicator(),
@@ -144,7 +144,7 @@ class MovieDetail extends StatelessWidget {
             ),
           ),
           SizedBox(height: 5,),
-          Text(actor.name, overflow: TextOverflow.ellipsis,maxLines: 2, textAlign: TextAlign.center,)
+          Text(actor.name!, overflow: TextOverflow.ellipsis,maxLines: 2, textAlign: TextAlign.center,)
         ],
       ),
     );

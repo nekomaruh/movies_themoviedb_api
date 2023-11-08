@@ -6,13 +6,13 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 class MoviesProvider{
-  String _apiKey = 'bfb512509d3d45a4e4282d35f0f4ef5d';
+  String _apiKey = 'ccd52450253a90dee26e52eecbf1ea6b';
   String _url = 'api.themoviedb.org';
   String _language = 'es-ES';
   int _popularsPage = 0;
   bool _loading = false;
 
-  List<Movie> _populars = new List();
+  List<Movie> _populars = [];
   final _popularsStreamController = StreamController<List<Movie>>.broadcast();
 
   Function(List<Movie>) get popularsSink => _popularsStreamController.sink.add;
@@ -20,7 +20,7 @@ class MoviesProvider{
   Stream<List<Movie>> get popularsStream => _popularsStreamController.stream;
 
   void disposeStreams(){
-    _popularsStreamController?.close();
+    _popularsStreamController.close();
   }
 
   Future<List<Movie>> _processResponse(String movieFilter, int page) async{

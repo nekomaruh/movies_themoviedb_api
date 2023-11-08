@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class DataSearch extends SearchDelegate{
 
-  String selection;
+  late String selection;
 
   final movies = [
     'Spiderman',
