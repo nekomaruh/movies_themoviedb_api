@@ -1,6 +1,6 @@
 class Cast {
 
-  List<Actor> actors = new List();
+  List<Actor> actors = [];
 
   Cast.fromJsonList( List<dynamic> jsonList  ){
 
@@ -15,14 +15,14 @@ class Cast {
 }
 
 class Actor {
-  int castId;
-  String character;
-  String creditId;
-  int gender;
-  int id;
-  String name;
-  int order;
-  String profilePath;
+  int? castId;
+  String? character;
+  String? creditId;
+  int? gender;
+  int? id;
+  String? name;
+  int? order;
+  String? profilePath;
 
   Actor({
     this.castId,

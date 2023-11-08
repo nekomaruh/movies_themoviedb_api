@@ -1,12 +1,12 @@
+import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app_3_peliculas/src/models/movie_model.dart';
-import 'package:flutter_swiper/flutter_swiper.dart';
 
 class CardSwiper extends StatelessWidget {
 
   final List<Movie> movies;
 
-  CardSwiper({@required this.movies});
+  CardSwiper({required this.movies});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,7 @@ class CardSwiper extends StatelessWidget {
 
 
           return Hero(
-            tag: movies[index].uniqueId,
+            tag: movies[index].uniqueId!,
             child: ClipRRect(
               borderRadius: BorderRadius.circular(15),
               child: GestureDetector(
